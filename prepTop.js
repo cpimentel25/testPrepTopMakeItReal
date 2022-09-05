@@ -141,3 +141,81 @@ console.log(`${ajustarTexto("", 3)}`) // " "
 console.log(`${ajustarTexto("hola", 2)}`) // "ho"
 console.log(`${ajustarTexto("Hola", 0)}`) // ""
 console.log(`${ajustarTexto("Hola", 5)}`) // "Hola "
+
+// Ejercicio 5
+// Given two strings s and t,
+// return true if t is an anagram of s, and false otherwise.
+
+// An Anagram is a word or phrase formed by rearranging the lettersof a
+// different word or phrase, typically using all the original letters exactly once.
+
+function anagram(str1, str2){
+    if(str1.length === str2.length){
+        let letterStr1 = str1.toLowerCase().split("").sort();
+        let newStr1 = letterStr1.join("");
+        // console.log(newStr1);
+        let letterStr2 = str2.toLowerCase().split("").sort();
+        let newStr2 = letterStr2.join("");
+        // console.log(newStr2);
+        if(newStr1 === newStr2){
+            console.log("Is a Anagram");
+        }
+        console.log("Not is Anagram")
+    }
+    return ;
+};
+
+anagram("anagram", "nagaram"); //true
+anagram("rat", "car"); //false
+anagram("tomate", "tomates") //false
+
+// Ejercicio 6
+// Given an integer array nums,
+// move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+
+// Note that you must do this in-place without making a copy of the array.
+
+function moveNumbers(num){
+    let newArray = [];
+    let firstArray = [];
+    for( i = 0; i < num.length; ++i){
+        // console.log(num[i]);
+        if(num[i] === 0){
+            newArray.push(0)
+        }else{
+            firstArray.push(num[i]);
+        }
+    }
+    // console.log(newArray);
+    // console.log(firstArray);
+    return console.log(firstArray.concat(newArray));
+};
+
+moveNumbers([0,1,0,3,12]); //[1,3,12,0,0]
+
+// Ejercicio 7
+// Given an array of integers nums and an integer target,
+// return indices of the two numbers such that they add up to target.
+
+// You may assume that each input would have exactly one solution,
+// and you may not use the same element twice.
+
+// You can return the answer in any order.
+
+function calc(num, target){
+    // console.log(num);
+    // console.log(target);
+    for(i = 1; i < num.length; ++i){
+        if((num[i - 1] + num[i]) === target){
+            // console.log("Working!");
+            console.log([(i - 1), i]);
+            break;
+        }
+    }
+    return;
+};
+
+calc([2,7,11,15], 9); //[0,1]
+calc([3,2,4], 6); //[1,2]
+calc([3,3], 6); //[0,1]
+calc([2,7,11,15,2,7], 9); //[0,1]
